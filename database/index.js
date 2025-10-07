@@ -20,10 +20,13 @@ async function runMigrations() {
     }
 
    
-  } catch (err) {
-    console.error('❌ Ошибка миграции:', err.message);
-    throw err;
-  }
+ } catch (err) {
+  console.error('❌ Ошибка миграции:');
+  console.error('   Сообщение:', err.message || '(нет)');
+  console.error('   Код:', err.code || '(нет)');
+  console.error('   Стек:', err.stack || '(нет)');
+  throw err;
+}
 }
 
 module.exports = { client, runMigrations };
